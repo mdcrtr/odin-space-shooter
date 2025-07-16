@@ -55,6 +55,10 @@ game_update :: proc(self: ^Game) {
 		self.command = .Menu
 	}
 
+	if self.player.health <= 0 {
+		return
+	}
+
 	dt := rl.GetFrameTime()
 	entities := &self.entities
 	player := &self.player
@@ -87,6 +91,10 @@ game_draw :: proc(self: ^Game) {
 	rl.DrawText(score_str, 4, 4, 40, rl.YELLOW)
 	health_str := rl.TextFormat("energy: %d", self.player.health)
 	rl.DrawText(health_str, 400, 4, 40, rl.YELLOW)
+
+	if self.player.health <= 0 {
+		rl.DrawText("Game Over\n Press Z", 220, 260, 40, rl.YELLOW)
+	}
 
 	rl.EndDrawing()
 }
