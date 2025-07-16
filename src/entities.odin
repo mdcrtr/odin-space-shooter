@@ -2,10 +2,6 @@ package main
 
 import rl "vendor:raylib"
 
-MAX_ENTITIES :: 100
-
-EntityFunc :: proc(e: ^Entity)
-
 Entities :: struct {
 	entities: [dynamic]Entity,
 }
